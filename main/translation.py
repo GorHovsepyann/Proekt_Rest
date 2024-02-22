@@ -3,7 +3,7 @@ from modeltranslation.translator import register, TranslationOptions
 
 @register(Header)
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('page1','page2','page3','page4','search')
+    fields = ('page1','page2','page3','page4','search','language_logo')
     
 @register(Etap1)
 class ProductTranslationOptions(TranslationOptions):
