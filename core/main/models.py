@@ -1,4 +1,5 @@
 from django.db import models
+from colorfield.fields import ColorField
 
 # Create your models here.
 
@@ -18,19 +19,14 @@ class Header(models.Model):
     def __str__(self) -> str:
         return self.name
 
-class Etap1(models.Model):
+class Slayder(models.Model):
     
     name = models.CharField('main name',max_length=250)
-    about = models.CharField('main text',max_length=250)
-    bd_img = models.ImageField('main image',upload_to='etap1/')
-    img = models.ImageField('main image',upload_to='etap1/')
+    background = ColorField('background color', default='#FF0000')
+    img = models.ImageField('slayder image',upload_to='etap1/')
     
     def __str__(self) -> str:
         return self.name
-    
-    class Meta:
-        verbose_name = 'Etap1'
-        verbose_name_plural = 'Etapner'
 
 class Choice(models.Model):
     

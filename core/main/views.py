@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import (HeaderSerializers,Etap1Serializers,ChoiceSerializers,
+from .serializers import (HeaderSerializers,SlayderSerializers,ChoiceSerializers,
                           ProductSerializers,AboutSerializers,AdvantagesSerializers)
-from .models import Header,Etap1,Choice,Product,About,Advantages
+from .models import Header,Slayder,Choice,Product,About,Advantages
 
 # Create your views here.
 
@@ -11,10 +11,10 @@ class HeaderView(viewsets.ModelViewSet):
     queryset = Header.objects.all()
     serializer_class = HeaderSerializers
     
-class Etap1View(viewsets.ModelViewSet):
+class SlayderView(viewsets.ModelViewSet):
     
-    queryset = Etap1.objects.all()
-    serializer_class = Etap1Serializers
+    queryset = Slayder.objects.all()
+    serializer_class = SlayderSerializers
     
 class ChoiseView(viewsets.ModelViewSet):
     

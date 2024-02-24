@@ -19,12 +19,12 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
-from main.views import HeaderView,Etap1View,ChoiseView,ProductView,AboutView,AdvantagesView
+from main.views import HeaderView,SlayderView,ChoiseView,ProductView,AboutView,AdvantagesView
 from django.conf.urls.i18n  import i18n_patterns
 
 router = routers.DefaultRouter()
 router.register('header_list',HeaderView)
-router.register('etap1_list',Etap1View)
+router.register('slayder_list',SlayderView)
 router.register('choise_list',ChoiseView)
 router.register('product_list',ProductView)
 router.register('about_list',AboutView)

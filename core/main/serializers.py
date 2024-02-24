@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Header,Etap1,Choice,Product,About,Advantages
+from .models import Header,Slayder,Choice,Product,About,Advantages
 
 class HeaderSerializers(serializers.ModelSerializer):
     
@@ -8,11 +8,11 @@ class HeaderSerializers(serializers.ModelSerializer):
         model = Header
         fields = '__all__'
         
-class Etap1Serializers(serializers.ModelSerializer):
+class SlayderSerializers(serializers.ModelSerializer):
     
     class Meta:
         
-        model = Etap1
+        model = Slayder
         fields = '__all__'
         
 class ChoiceSerializers(serializers.ModelSerializer):

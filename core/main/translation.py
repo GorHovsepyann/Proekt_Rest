@@ -1,13 +1,13 @@
-from .models import Header,Etap1,Choice,Product
+from .models import Header,Slayder,Choice,Product
 from modeltranslation.translator import register, TranslationOptions
 
 @register(Header)
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('name', 'page1','page2','page3','search')
+    fields = ('page1','page2','page3','page4','search','language_logo')
     
-@register(Etap1)
+@register(Slayder)
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('name','about')
+    field = ('name')
     
 @register(Choice)
 class ProductTranslationOptions(TranslationOptions):
