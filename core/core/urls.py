@@ -19,7 +19,8 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
-from main.views import HeaderView,SlayderView,ChoiseView,ProductView,AboutView,AdvantagesView
+from main.views import (HeaderView,SlayderView,ChoiseView,ProductView,AdvantagesView,
+                        ReservationView,CostView,RequirementsView,InsuranceView,AdditionalView)
 from django.conf.urls.i18n  import i18n_patterns
 
 router = routers.DefaultRouter()
@@ -27,11 +28,15 @@ router.register('header_list',HeaderView)
 router.register('slayder_list',SlayderView)
 router.register('choise_list',ChoiseView)
 router.register('product_list',ProductView)
-router.register('about_list',AboutView)
+router.register('reservation_list',ReservationView)
+router.register('cost_list',CostView)
+router.register('requirements_list',RequirementsView)
+router.register('insurance_list',InsuranceView)
+router.register('additional_list',AdditionalView)
 router.register('advantages_list',AdvantagesView)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('adm/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
     path('api/auth/',include('rest_framework.urls')),
     path('',include(router.urls))

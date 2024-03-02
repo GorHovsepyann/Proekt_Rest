@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import (HeaderSerializers,SlayderSerializers,ChoiceSerializers,
-                          ProductSerializers,AboutSerializers,AdvantagesSerializers)
-from .models import Header,Slayder,Choice,Product,About,Advantages
+from django_filters.rest_framework import DjangoFilterBackend
+from .serializers import (HeaderSerializers,SlayderSerializers,ChoiceSerializers,CostSerializers,RequirementsSerializers,
+                          ProductSerializers,AdvantagesSerializers,ReservationSerializers,InsuranceSerializers,AdditionalSerializers)
+from .models import Header,Slayder,Choice,Product,Advantages,Reservation,Cost,Requirements,Insurance,Additional
+from .filters import ReservationFilter,CostFilter
 
 # Create your views here.
 
@@ -11,6 +13,33 @@ class HeaderView(viewsets.ModelViewSet):
     queryset = Header.objects.all()
     serializer_class = HeaderSerializers
     
+class ReservationView(viewsets.ModelViewSet):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializers
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ReservationFilter
+    
+class CostView(viewsets.ModelViewSet):
+    queryset = Cost.objects.all()
+    serializer_class = CostSerializers
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = CostFilter  
+
+class RequirementsView(viewsets.ModelViewSet):
+    
+    queryset = Requirements.objects.all()
+    serializer_class = RequirementsSerializers
+
+class InsuranceView(viewsets.ModelViewSet):
+    
+    queryset = Insurance.objects.all()
+    serializer_class = InsuranceSerializers
+    
+class AdditionalView(viewsets.ModelViewSet):
+    
+    queryset = Additional.objects.all()
+    serializer_class = AdditionalSerializers
+
 class SlayderView(viewsets.ModelViewSet):
     
     queryset = Slayder.objects.all()
@@ -25,11 +54,7 @@ class ProductView(viewsets.ModelViewSet):
     
     queryset = Product.objects.all()
     serializer_class = ProductSerializers
-
-class AboutView(viewsets.ModelViewSet):
-    
-    queryset = About.objects.all()
-    serializer_class = AboutSerializers    
+  
     
 class AdvantagesView(viewsets.ModelViewSet):
     

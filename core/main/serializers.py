@@ -1,11 +1,47 @@
 from rest_framework import serializers
-from .models import Header,Slayder,Choice,Product,About,Advantages
+from .models import Header,Slayder,Choice,Product,Advantages,Reservation,Cost,Requirements,Insurance,Additional
+
 
 class HeaderSerializers(serializers.ModelSerializer):
     
     class Meta:
         
         model = Header
+        fields = '__all__'
+
+class ReservationSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        
+        model = Reservation
+        fields = '__all__'
+        
+class CostSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        
+        model = Cost
+        fields = '__all__'
+    
+class RequirementsSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        
+        model = Requirements
+        fields = '__all__'
+        
+class InsuranceSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        
+        model = Insurance
+        fields = '__all__'
+
+class AdditionalSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        
+        model = Additional
         fields = '__all__'
         
 class SlayderSerializers(serializers.ModelSerializer):
@@ -28,13 +64,7 @@ class ProductSerializers(serializers.ModelSerializer):
         
         model = Product
         fields = '__all__'
-
-class AboutSerializers(serializers.ModelSerializer):
-    
-    class Meta:
         
-        model = About
-        fields = '__all__'
         
 class AdvantagesSerializers(serializers.ModelSerializer):
     
