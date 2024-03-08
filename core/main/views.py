@@ -4,7 +4,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import (HeaderSerializers,SlayderSerializers,ChoiceSerializers,CostSerializers,RequirementsSerializers,
                           ProductSerializers,AdvantagesSerializers,ReservationSerializers,InsuranceSerializers,AdditionalSerializers)
 from .models import Header,Slayder,Choice,Product,Advantages,Reservation,Cost,Requirements,Insurance,Additional
-from .filters import ReservationFilter,CostFilter
+from .filters import ReservationFilter,CostFilter,ProductFilter
 
 # Create your views here.
 
@@ -51,9 +51,10 @@ class ChoiseView(viewsets.ModelViewSet):
     serializer_class = ChoiceSerializers
 
 class ProductView(viewsets.ModelViewSet):
-    
     queryset = Product.objects.all()
     serializer_class = ProductSerializers
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ProductFilter
   
     
 class AdvantagesView(viewsets.ModelViewSet):

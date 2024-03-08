@@ -26,8 +26,11 @@ SECRET_KEY = 'django-insecure-9*6l&&ab4syv9@5c%+197o^pmu)=zw$6=zdpbbza$xfhcmj7ao
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -59,19 +62,6 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware'
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000",
-    "http://localhost:3000",
-]
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.example\.com$",
-]
-
-CORS_URLS_REGEX = r"^/api/.*$"
 
 CORS_ALLOW_METHODS = (
     "DELETE",
@@ -82,25 +72,20 @@ CORS_ALLOW_METHODS = (
     "PUT",
 )
 
-CORS_ALLOW_HEADERS = (
+CORS_ALLOW_HEADERS = [
     "accept",
+    "accept-encoding",
     "authorization",
     "content-type",
+    "dnt",
+    "origin",
     "user-agent",
     "x-csrftoken",
     "x-requested-with",
-)
-
-CORS_ALLOWED_ORIGINS = [
-    "https://read-only.example.com",
-    "https://read-and-write.example.com",
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://read-and-write.example.com",
 ]
 
 ROOT_URLCONF = 'core.urls'
+
 
 TEMPLATES = [
     {

@@ -13,7 +13,6 @@ class Header(models.Model):
     page4 = models.CharField('page4 name',max_length=250)
     search = models.CharField('search name',max_length=250)
     search_logo = models.ImageField('search_logo',upload_to='header/')
-    currency_logo = models.ImageField('currency_logo',upload_to='header/')
     language_logo = models.ImageField('language_logo',upload_to='header/')
     
     def __str__(self) -> str:
@@ -32,6 +31,7 @@ class Choice(models.Model):
     
     name = models.CharField('choise name',max_length=250)
     car_logo = models.ImageField('car image',upload_to='Choise/')
+    act_car_logo = models.ImageField('active car image',upload_to='Choise/')
     car_about = models.CharField('Car name',max_length=250)
     
     def __str__(self) -> str:
@@ -39,6 +39,7 @@ class Choice(models.Model):
     
 class Product(models.Model):
     
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE ,related_name='choice_pro')
     name = models.CharField('product name',max_length=250)
     button_name = models.CharField('button name',max_length=250)
     pleace_name = models.CharField('pleace name',max_length=250)
