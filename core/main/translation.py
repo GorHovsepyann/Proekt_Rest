@@ -1,4 +1,4 @@
-from .models import Header,Choice,Product,Reservation,Cost,Requirements,Insurance,Additional,Advantages
+from .models import Header,Choice,Product,Reservation,Cost,Requirements,Insurance,Additional,Advantages,Slayder
 from modeltranslation.translator import register, TranslationOptions
 
 @register(Header)
@@ -7,15 +7,19 @@ class HeaderTranslationOptions(TranslationOptions):
 
 @register(Reservation)
 class ReservationTranslationOptions(TranslationOptions):
-    fields = ('name','spet_name','spet_about')
+    fields = ('name','gear_name','gear_about','engine_name','engine_about','year_name','year_about','air_name','air_about','number_name','roof_name','roof_about')
+
+@register(Slayder)
+class SlayderTranslationOptions(TranslationOptions):
+    fields = ('button_name',)
     
 @register(Cost)
 class CostTranslationOptions(TranslationOptions):
-    fields = ('name','cost_name','but_name','rent_date')
+    fields = ('name','rent_name','del_name','pick_name','drop_name','other_name','free_name','total_name','deposit_name','pay_name','but_name','rent_date')
 
 @register(Requirements)
 class RequirementsTranslationOptions(TranslationOptions):
-    fields = ('name','req_name')
+    fields = ('name','drivers_name','drivers_num','min_name','min_num','mil_name','mil_num')
 
 @register(Insurance)
 class InsuranceTranslationOptions(TranslationOptions):
@@ -23,7 +27,7 @@ class InsuranceTranslationOptions(TranslationOptions):
 
 @register(Additional)
 class AdditionalTranslationOptions(TranslationOptions):
-    fields = ('name','add_name','winter_name')
+    fields = ('name','add_name','safeti_name','seat_name','booster_name','second_name','router_name','winter_name','geo_name')
     
 @register(Choice)
 class ChoiceTranslationOptions(TranslationOptions):

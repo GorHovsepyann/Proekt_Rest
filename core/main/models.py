@@ -21,21 +21,22 @@ class Header(models.Model):
 class Slayder(models.Model):
     
     name = models.CharField('main name',max_length=250)
-    background = ColorField('background color', default='#FF0000')
-    img = models.ImageField('slayder image',upload_to='etap1/')
+    img = models.ImageField('car image',upload_to='Slayder/')
+    car_name = models.CharField('car name',max_length=250,null=True)
+    button_name = models.CharField('button name',max_length=250,null=True)
     
     def __str__(self) -> str:
-        return self.name
+        return self.car_name
 
 class Choice(models.Model):
     
     name = models.CharField('choise name',max_length=250)
     car_logo = models.ImageField('car image',upload_to='Choise/')
     act_car_logo = models.ImageField('active car image',upload_to='Choise/')
-    car_about = models.CharField('Car name',max_length=250)
+    car_about = models.CharField('car name',max_length=250)
     
     def __str__(self) -> str:
-        return self.name
+        return self.car_about
     
 class Product(models.Model):
     
@@ -59,15 +60,26 @@ class Product(models.Model):
     price_text = models.CharField('price about',max_length=250)
     
     def __str__(self) -> str:
-        return self.name
+        return self.car_name
     
 class Reservation(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='prod_res')
     name = models.CharField('spetification name',max_length=250)
     car_name = models.CharField('car name', max_length=250) 
     car_img = models.ImageField('car image',upload_to='reservation/')
-    spet_name = models.CharField('spetification name',max_length=250)
-    spet_about = models.CharField('spetification about',max_length=250)
+    gear_name = models.CharField('gear_box name',max_length=250,null=True)
+    gear_about = models.CharField('gear_box about',max_length=250,null=True)
+    engine_name = models.CharField('engine name',max_length=250,null=True)
+    engine_about = models.CharField('engine about',max_length=250,null=True)
+    year_name = models.CharField('year_manufacture name',max_length=250,null=True)
+    year_about = models.CharField('year_manufacture about',max_length=250,null=True)
+    air_name = models.CharField('air_conditioner name',max_length=250,null=True)
+    air_about = models.CharField('air_conditioner about',max_length=250,null=True)
+    number_name = models.CharField('number_seats name',max_length=250,null=True)
+    number_about = models.BigIntegerField('number_seats number',null=True)
+    roof_name = models.CharField('roof name',max_length=250,null=True)
+    roof_about = models.CharField('roof about',max_length=250,null=True)
+    
     
     def __str__(self) -> str:
         return self.name
@@ -75,9 +87,26 @@ class Reservation(models.Model):
 class Cost(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='prod_cost')
     name = models.CharField('cost name',max_length=250)
-    cost_name = models.CharField('cost name',max_length=250)
-    cost_num = models.IntegerField('cost price')
+    rent_name = models.CharField('rent_for name',max_length=250,null=True)
+    rent_num = models.IntegerField('rent_for price',null=True)
     rent_date = models.CharField('rent date',max_length=250)
+    del_name = models.CharField('deliveri name',max_length=250,null=True)
+    del_num = models.IntegerField('delivery price',null=True)
+    pick_name = models.CharField('pick_up name',max_length=250,null=True)
+    pick_num = models.IntegerField('pick_up price',null=True)
+    drop_name = models.CharField('drop_off name',max_length=250,null=True)
+    drop_num = models.IntegerField('drop_off price',null=True)
+    other_name = models.CharField('other name',max_length=250,null=True)
+    tpl_name = models.CharField('tpl name',max_length=250,null=True)
+    tpl_num = models.IntegerField('tpl price',null=True)
+    free_name = models.CharField('free_cancellation name',max_length=250,null=True)
+    free_num = models.IntegerField('free_cancellation price',null=True)
+    total_name = models.CharField('total name',max_length=250,null=True)
+    total_num = models.IntegerField('total price',null=True)
+    deposit_name = models.CharField('deposit name',max_length=250,null=True)
+    deposit_num = models.IntegerField('deposit price',null=True)
+    pay_name = models.CharField('to_pay name',max_length=250,null=True)
+    pay_num = models.IntegerField('to_pay price',null=True)    
     but_name = models.CharField('amragrel name',max_length=250)
     
     def __str__(self) -> str:
@@ -85,8 +114,13 @@ class Cost(models.Model):
     
 class Requirements(models.Model):
     name = models.CharField('requirements name',max_length=250)
-    req_name = models.CharField('requirements name',max_length=250)
-    req_num = models.CharField('requirements age',max_length=250)
+    drivers_name = models.CharField('drivers name',max_length=250,null=True)
+    drivers_num = models.CharField('drivers about',max_length=250,null=True)
+    min_name = models.CharField('minimum_driving name',max_length=250,null=True)
+    min_num = models.CharField('minimum_driving about',max_length=250,null=True)
+    mil_name = models.CharField('mileage name',max_length=250,null=True)
+    mil_num = models.CharField('mileage about',max_length=250,null=True)
+    
         
     def __str__(self) -> str:
         return self.name
@@ -119,9 +153,21 @@ class Insurance(models.Model):
 class Additional(models.Model):
     name = models.CharField('requirements name',max_length=250)
     add_name = models.CharField('additional name',max_length=250)
-    add_num = models.IntegerField('additional price')
-    winter_name = models.CharField('winter name',max_length=250)
-    winter_num = models.CharField('winter price',max_length=250)
+    safeti_name = models.CharField('child_safeti name',max_length=250,null=True)
+    safeti_num = models.CharField('child_safeti price',max_length=250,null=True)
+    seat_name = models.CharField('child_seat name',max_length=250,null=True)
+    seat_num = models.CharField('child_seat price',max_length=250,null=True)
+    booster_name = models.CharField('child_booster name',max_length=250,null=True)
+    booster_num = models.CharField('child_booster price',max_length=250,null=True)
+    second_name = models.CharField('second name',max_length=250,null=True)
+    second_num = models.CharField('second price',max_length=250,null=True)
+    router_name = models.CharField('wifi_router name',max_length=250,null=True)
+    router_num = models.CharField('wifi_router price',max_length=250,null=True)
+    winter_name = models.CharField('winter name',max_length=250,null=True)
+    winter_num = models.CharField('winter price',max_length=250,null=True)
+    geo_name = models.CharField('georgia name',max_length=250,null=True)
+    geo_num = models.CharField('georgia price',max_length=250,null=True)
+    
     
     def __str__(self) -> str:
         return self.name
